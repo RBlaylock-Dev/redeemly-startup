@@ -39,23 +39,27 @@ export default async function AboutPage() {
             <Link href="/" className="hover:text-white transition-colors">
               Home
             </Link>
-            <Link
-              href="/app/resources"
-              className="hover:text-white transition-colors"
-            >
-              Resources
-            </Link>
+            {user && (
+              <>
+                <Link
+                  href="/app/resources"
+                  className="hover:text-white transition-colors"
+                >
+                  Resources
+                </Link>
+                <Link
+                  href="/app/scripture"
+                  className="hover:text-white transition-colors"
+                >
+                  Bible
+                </Link>
+              </>
+            )}
             <Link
               href="/contact"
               className="hover:text-white transition-colors"
             >
               Contact
-            </Link>
-            <Link
-              href="/app/scripture"
-              className="hover:text-white transition-colors"
-            >
-              Bible
             </Link>
           </nav>
           <div className="flex items-center gap-4">
