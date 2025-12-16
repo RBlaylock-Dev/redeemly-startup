@@ -43,8 +43,8 @@ export default async function AppLayout({
     <div className="flex min-h-screen w-full flex-col bg-muted/40 md:flex-row">
       <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex md:w-64 transition-all duration-300">
         <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
-          <Link href="/app" className="flex items-center gap-2 font-semibold">
-            <div className="relative h-6 w-6">
+          <Link href="/app" className="flex items-center gap-2 font-semibold cursor-pointer">
+            <div className="relative h-28 w-28">
               <Image
                 src="/logo.png"
                 alt="Logo"
@@ -52,7 +52,7 @@ export default async function AppLayout({
                 className="object-contain"
               />
             </div>
-            <span className="hidden md:inline">Redeemly</span>
+            <span className="hidden md:inline"></span>
           </Link>
           <Button
             variant="outline"
@@ -147,7 +147,7 @@ export default async function AppLayout({
               href="/app"
               className="flex items-center gap-2 font-semibold md:hidden"
             >
-              <div className="relative h-6 w-6">
+              <div className="relative h-10 w-10">
                 <Image
                   src="/logo.png"
                   alt="Logo"

@@ -23,7 +23,7 @@ export default async function Home() {
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
             <Link href="/" className="flex items-center gap-2">
-              <div className="relative h-8 w-8">
+              <div className="relative h-20 w-20">
                 <Image
                   src="/logo.png"
                   alt="Redeemly Logo"
