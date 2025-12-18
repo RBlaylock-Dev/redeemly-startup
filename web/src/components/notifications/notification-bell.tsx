@@ -21,7 +21,7 @@ import { useRouter } from "next/navigation";
 
 interface Notification {
   id: string;
-  type: "reaction" | "comment" | "system";
+  type: "reaction" | "comment" | "system" | "message";
   entity_id: string;
   sender: {
     username: string;
@@ -92,7 +92,14 @@ export function NotificationBell({ userId }: { userId: string }) {
     setOpen(false);
 
     // Navigate to post (Assuming all notifications link to posts currently)
-    router.push(`/app/feed?postId=${n.entity_id}`);
+    if (n.type === "message") {
+      // Redirect to profile? Or just handle as generic.
+      // Opening the chat drawer is hard from here without global state.
+      // Best we can do is maybe route to their profile which has a "Message" button
+      router.push(`/app/profile/${n.sender.username}`);
+    } else {
+      router.push(`/app/feed?postId=${n.entity_id}`);
+    }
   }
 
   return (
@@ -149,6 +156,7 @@ export function NotificationBell({ userId }: { userId: string }) {
                       {n.type === "reaction" && "reacted to your post"}
                       {n.type === "comment" && "commented on your post"}
                       {n.type === "system" && "sent a system message"}
+                      {n.type === "message" && "sent you a message"}
                     </p>
                     <p className="text-xs text-muted-foreground">
                       {formatDistanceToNow(new Date(n.created_at), {
