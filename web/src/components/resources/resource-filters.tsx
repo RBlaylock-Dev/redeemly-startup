@@ -37,7 +37,8 @@ export function ResourceFilters() {
           variant="outline"
           className="h-11 px-4 gap-2 bg-[#5C5C54] text-white hover:bg-[#4a4a44] border-transparent"
         >
-          ABCEA LANG...
+          <SlidersHorizontal className="h-4 w-4" />
+          Filters
         </Button>
       </div>
 

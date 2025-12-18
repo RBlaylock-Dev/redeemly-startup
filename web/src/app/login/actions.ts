@@ -35,7 +35,7 @@ export async function signup(formData: FormData) {
     redirect("/signup?error=" + encodeURIComponent("Passwords do not match"));
   }
 
-  const { error } = await supabase.auth.signUp({
+  const { data, error } = await supabase.auth.signUp({
     email,
     password,
     options: {
@@ -47,6 +47,10 @@ export async function signup(formData: FormData) {
 
   if (error) {
     redirect("/signup?error=" + encodeURIComponent(error.message));
+  }
+
+  if (!data?.session) {
+    redirect("/signup/verify-email");
   }
 
   revalidatePath("/", "layout");

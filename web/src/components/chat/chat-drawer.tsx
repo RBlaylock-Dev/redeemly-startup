@@ -25,6 +25,7 @@ interface Message {
   receiver_id: string;
   content: string;
   created_at: string;
+  isOptimistic?: boolean;
 }
 
 interface User {
@@ -130,18 +131,48 @@ export function ChatDrawer({ currentUserId }: { currentUserId: string }) {
         },
         async (payload) => {
           const msg = payload.new as Message;
-          if (
-            (msg.sender_id === currentUserId &&
-              msg.receiver_id === selectedUser.id) ||
-            (msg.sender_id === selectedUser.id &&
-              msg.receiver_id === currentUserId)
-          ) {
-            setMessages((prev) => [...prev, msg]);
-            setTimeout(
-              () => scrollRef.current?.scrollIntoView({ behavior: "smooth" }),
-              100
-            );
-          }
+
+          setMessages((prev) => {
+            // Check if we have an optimistic message that looks like this real one
+            // (from me, same content)
+            if (msg.sender_id === currentUserId) {
+              const optimisticMatchIndex = prev.findIndex(
+                (m) =>
+                  m.isOptimistic &&
+                  m.content === msg.content &&
+                  m.receiver_id === msg.receiver_id
+              );
+
+              if (optimisticMatchIndex !== -1) {
+                // Replace optimistic with real
+                const newMessages = [...prev];
+                newMessages[optimisticMatchIndex] = msg;
+                return newMessages;
+              }
+            }
+
+            // Also check for duplicates by ID just in case
+            if (prev.some((m) => m.id === msg.id)) {
+              return prev;
+            }
+
+            // Otherwise append if it belongs to this conversation
+            if (
+              (msg.sender_id === currentUserId &&
+                msg.receiver_id === selectedUser.id) ||
+              (msg.sender_id === selectedUser.id &&
+                msg.receiver_id === currentUserId)
+            ) {
+              return [...prev, msg];
+            }
+
+            return prev;
+          });
+
+          setTimeout(
+            () => scrollRef.current?.scrollIntoView({ behavior: "smooth" }),
+            100
+          );
         }
       )
       .subscribe();
@@ -166,6 +197,7 @@ export function ChatDrawer({ currentUserId }: { currentUserId: string }) {
       receiver_id: selectedUser.id,
       content: newMessage,
       created_at: new Date().toISOString(),
+      isOptimistic: true,
     };
     setMessages((prev) => [...prev, optimisticMsg]);
     setNewMessage("");
