@@ -14,9 +14,9 @@ export async function searchGlobal(query: string) {
   // Search Users
   const { data: users } = await supabase
     .from("profiles")
-    .select("id, username, full_name, avatar_url")
+    .select("id, username, full_name, avatar_url, bio, location, website")
     .or(`username.ilike.${searchTerm},full_name.ilike.${searchTerm}`)
-    .limit(5);
+    .limit(20);
 
   // Search Posts
   const { data: posts } = await supabase
@@ -36,7 +36,8 @@ export async function searchGlobal(query: string) {
     `
     )
     .ilike("content", searchTerm)
-    .limit(5);
+    .order("created_at", { ascending: false })
+    .limit(20);
 
   return {
     users: users || [],

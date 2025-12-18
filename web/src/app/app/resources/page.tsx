@@ -1,12 +1,16 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { getResources } from "@/app/actions/resources";
+
 import { ResourcesHero } from "@/components/resources/resources-hero";
 import { ResourceFilters } from "@/components/resources/resource-filters";
 import { ResourceCardHorizontal } from "@/components/resources/resource-card-horizontal";
 import { ResourceSidebar } from "@/components/resources/resource-sidebar";
+import { ResourceUploadDialog } from "@/components/resources/resource-upload-dialog";
 
-// Mock Data matching the design
-const resources = [
+// Mock Data matching the design (used as initial state or fallback)
+const MOCK_RESOURCES = [
   {
     id: "1",
     title: "Overcoming Shame with God's Truth",
@@ -66,10 +70,27 @@ const resources = [
 ];
 
 export default function ResourcesPage() {
+  const [resources, setResources] = useState<any[]>(MOCK_RESOURCES);
+
+  useEffect(() => {
+    async function fetchResources() {
+      const data = await getResources();
+      if (data && data.length > 0) {
+        setResources(data);
+      }
+    }
+    fetchResources();
+  }, []);
+
   return (
     <div className="flex flex-col gap-8 w-full max-w-[1400px] mx-auto pb-10">
       {/* 1. Hero Section */}
       <ResourcesHero />
+
+      {/* Upload Action */}
+      <div className="flex justify-end px-4 mobile:px-0">
+        <ResourceUploadDialog />
+      </div>
 
       {/* 2. Filter Bar */}
       <ResourceFilters />

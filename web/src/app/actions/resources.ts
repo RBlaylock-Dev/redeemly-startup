@@ -8,7 +8,9 @@ export async function createResource(formData: FormData) {
   const title = formData.get("title") as string;
   const description = formData.get("description") as string;
   const url = formData.get("url") as string;
+
   const category = formData.get("category") as string;
+  const type = formData.get("type") as string;
 
   const user = (await supabase.auth.getUser()).data.user;
 
@@ -21,6 +23,7 @@ export async function createResource(formData: FormData) {
     description,
     url,
     category,
+    type,
     user_id: user.id,
     tags: [], // Could parse tags from a string if needed
   });
@@ -62,4 +65,31 @@ export async function toggleBookmark(resourceId: string) {
   }
 
   revalidatePath("/app/resources");
+}
+export async function getResources() {
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from("resources")
+    .select("*, profiles(full_name)")
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    console.error("Error fetching resources:", error);
+    return [];
+  }
+
+  return data.map((resource: any) => ({
+    id: resource.id,
+    title: resource.title,
+    description: resource.description,
+    type: resource.type,
+    date: new Date(resource.created_at).toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    }),
+    imageUrl: resource.image_url || "/hero3.png", // Assuming image_url might be there or defaulting
+    author: resource.profiles?.full_name || "Unknown",
+    url: resource.url,
+  }));
 }

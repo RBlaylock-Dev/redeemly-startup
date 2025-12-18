@@ -7,6 +7,7 @@ import { Home, Users, BookOpen, LogOut, Menu, Shield } from "lucide-react";
 import { NotificationBell } from "@/components/notifications/notification-bell";
 import { ChatDrawer } from "@/components/chat/chat-drawer";
 import { SearchInput } from "@/components/search/search-input";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default async function AppLayout({
   children,
@@ -26,7 +27,7 @@ export default async function AppLayout({
   // Fetch verified profile role
   const { data: profile } = await supabase
     .from("profiles")
-    .select("role")
+    .select("role, avatar_url, full_name")
     .eq("id", user.id)
     .single();
 
@@ -43,7 +44,10 @@ export default async function AppLayout({
     <div className="flex min-h-screen w-full flex-col bg-muted/40 md:flex-row">
       <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex md:w-64 transition-all duration-300">
         <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
-          <Link href="/app" className="flex items-center gap-2 font-semibold cursor-pointer">
+          <Link
+            href="/app"
+            className="flex items-center gap-2 font-semibold cursor-pointer"
+          >
             <div className="relative h-28 w-28">
               <Image
                 src="/logo.png"
@@ -164,6 +168,17 @@ export default async function AppLayout({
             <div className="flex items-center gap-4">
               <SearchInput className="hidden md:block" />
               <NotificationBell userId={user.id} />
+              <Link href="/app/profile">
+                <Avatar className="h-8 w-8 cursor-pointer border border-border">
+                  <AvatarImage
+                    src={profile?.avatar_url || user.user_metadata?.avatar_url}
+                  />
+                  <AvatarFallback>
+                    {profile?.full_name?.charAt(0) ||
+                      user.email?.charAt(0).toUpperCase()}
+                  </AvatarFallback>
+                </Avatar>
+              </Link>
             </div>
           </div>
         </header>
