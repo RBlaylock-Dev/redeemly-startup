@@ -147,27 +147,108 @@ export default async function AboutPage() {
             {/* Text Column */}
             <div className="space-y-6 text-lg leading-relaxed text-[#2a2a2a]/90 font-serif">
               <p>
-                I grew up in a home marked by pain and brokenness. Spiraling
-                into addiction and living a gay lifestyle, I was lost, sick, and
-                on the brink of death. Diagnosed with HIV and cancers, I spent
-                60 days in the hospital. Strapped to a ventilator, I had
-                terrifying demonic visions of hell as I fought to stay alive.
-                But even in the midst of that darkness, I felt a love that
-                pulled me out of the pit and gave me new hope.
+                I grew up in a home marked by pain. My father was an alcoholic,
+                and the sexual and mental abuse I experienced shaped my
+                childhood in ways no child should ever have to endure. At 16, I
+                had a child out of wedlock, but because of the circumstances
+                around me, I wasn’t allowed to be in her life. The heartbreak of
+                that loss stayed with me for years.
               </p>
               <p>
-                By God&apos;s grace, I was miraculously rescued. Jesus saved me,
-                healed me and set me free from homosexuality, pornography, and
-                addiction. I was restored and given a new identity in Christ.
-                After years of separation, my daughter, who I had lost all
-                contact with, is back in my life through a beautiful
-                reconciliation only God could have orchestrated.
+                At the same age, I came out as gay and spent years deeply
+                immersed in that community. I was searching for identity,
+                belonging, and love anywhere I could find it. By the age of 20,
+                I married a man, still trying to fill a void I didn’t know how
+                to name. Yet even in my confusion, sexuality, and brokenness, I
+                felt something tugging at me — a gentle cling from God that I
+                didn’t fully understand.
               </p>
               <p>
-                God transformed my life in ways I could never have imagined.
-                Redeemly Ministries was born out of the calling God placed on my
-                life to help others experience the same freedom in Christ that
-                saved me from the depths of sin and despair.
+                At 21, I became addicted to pain pills, which eventually led me
+                to meth. My addiction came and went in cycles for years. Around
+                the age of 25, my addiction led me into legal trouble. The
+                consequences of my choices caught up with me, and I found myself
+                facing situations that reinforced the lie that my life was
+                permanently derailed. Shame, fear, and hopelessness set in, and
+                I truly believed I had ruined any chance at a meaningful future.
+              </p>
+              <p>
+                But even in that season — in my addiction, my legal trouble, and
+                my brokenness — God never released His grip on me.
+              </p>
+              <p>
+                When I was 28, everything came to a halt. I spent 60 days in the
+                hospital on my deathbed. I was diagnosed with HIV, Kaposi
+                sarcoma, and Castleman’s disease. My viral load was over
+                750,000, and my CD4 count was just 13. I was placed on a
+                ventilator for eight days and went through chemotherapy and
+                intense treatments just to stay alive.
+              </p>
+              <p>
+                While I was on the ventilator, I experienced terrifying demonic
+                visions of hell — visions that were dark, vivid, and real. But
+                even in those visions, I felt a love I couldn’t explain. Jesus
+                was with me, walking beside me through every moment of that
+                darkness. It was as if God was showing me the path I was headed
+                toward, but Jesus was saying, “This is where you’re going… but
+                I’m pulling you back.”
+              </p>
+              <p>
+                When I came out of the hospital, I still struggled. I still
+                tried to stray. But God had marked me. And slowly, He began
+                restoring the things I thought were lost forever.
+              </p>
+              <p>
+                After 14 years — a dream I had completely given up on — my
+                daughter came back into my life. God also delivered me from
+                addiction, pornography, and homosexuality. Today, I am no longer
+                attracted to the same sex. God didn’t just change my behavior;
+                He transformed my heart and renewed my desires.
+              </p>
+              <p>
+                I am now part of a healthy, life-giving church community — a
+                tribe that loves me, walks with me, and calls me higher. In May,
+                I begin ministry school, stepping into the calling God had
+                placed on my life years ago — the path I ran from for so long.
+              </p>
+              <p>
+                There is another part of my testimony I never want to leave out.
+                For as long as I can remember, I dreamed of being a developer.
+                For years, because of trauma, addiction, legal trouble, and the
+                lies spoken over my life, I believed I would be stuck in a
+                dead-end job forever. I believed my past disqualified me from a
+                future.
+              </p>
+              <p>
+                But when I fully surrendered my life to God, He redeemed not
+                only my soul — He redeemed my future. God gave me clarity,
+                discipline, and confidence. Today, I am a Senior Software
+                Engineer working for a company I absolutely love. I love my job.
+                I love my coworkers. And I am surrounded by wonderful friends
+                and people who are now part of my support system — people who
+                speak life, accountability, and encouragement into my life every
+                day.
+              </p>
+              <p>
+                Today, I am free — free from addiction, free from shame, and
+                free from the legal consequences that once defined me. What once
+                felt like a permanent stain has become a testimony of God’s
+                mercy and grace.
+              </p>
+              <p>
+                The enemy will always try to entice the flesh and make sin look
+                desirable. But it is an illusion that leads to destruction.
+                God’s way leads to life.
+              </p>
+              <p>
+                God loves you. No matter what you’ve done or where you’ve been,
+                He will forgive you if you surrender it all to Him. If God can
+                rescue me from abuse, addiction, legal trouble, sickness,
+                confusion, and the gates of hell — and then restore my family,
+                my calling, my community, and my future — He can do it for you.
+              </p>
+              <p className="font-bold">
+                I serve the God of the impossible. And my life is living proof.
               </p>
             </div>
           </div>
